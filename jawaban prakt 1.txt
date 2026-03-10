@@ -1,0 +1,10 @@
+1. setelah dirun 5 kali percobaan :
+2. Hasil :
+    Load 1 = 100001
+    Load 2 = 100001
+    Load 3 = 100001
+    Load 4 = 100012
+    Load 5 = 100000
+3. Penyebab inkonsisten adalah : adanya interleave antar thread tanpa adanhya sinkronisasi
+
+#Nama : Irma Yuliana | Gina Raisa
