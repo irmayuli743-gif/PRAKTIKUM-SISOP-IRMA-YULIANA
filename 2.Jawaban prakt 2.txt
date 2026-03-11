@@ -1,0 +1,13 @@
+1. setelah dirun 5 kali percobaan :
+2. Hasil :
+    Load 1 = 200000
+    Load 2 = 200000
+    Load 3 = 200000
+    Load 4 = 200000
+    Load 5 = 200000
+3. Analisis :
+    - Lock menjamin hanya satu thread masuk critical section.
+    - Mutual Exclusion tercapai.
+    - Karena tidak ada interleaving saat increment, hasil selalu konsisten 200000
+   
+#Nama : Irma Yuliana | Gina Raisa
