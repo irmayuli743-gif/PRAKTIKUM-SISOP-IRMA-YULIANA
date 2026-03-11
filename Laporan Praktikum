@@ -1,0 +1,129 @@
+Nama        : Irma Yuliana
+              Gina Raisa
+Mata Kuliah : Informatika
+Semester    : 2 (dua)
+Topik       : Thread, Race condition, Mutex, Semaphore, Deadlock, dan Starvation.
+
+1. Tujuan Praktikum
+   - Mengimplementasikan multithreading.
+   - Mengidentiikasi race condition.
+   - Menggunakan mutex dan semaphore.
+   - Menganalisis dan memperbaiki deadlock.
+   - Mengevaluasi perbedaan teknik sinkronisasi.
+   
+ 2. Hasil Eksekusi Program
+   a. Percobaan 1 (Race condition)
+      program dijalankan menggunakan dua thread yang mengakses variabel global counter
+      Hasil yang diperoleh setelah beberapa kali menjalankan program:
+      1. 100001
+      2. 100001
+      3. 100001 
+      4. 100012
+      5. 100000
+      Secara teori nilai seharusnya 100000 + 100000 = 200000 
+      Namun hasil yang diperoleh lebih kecil
+   b. Percobaan 2 (Mutex)
+      Hasil yang diperoleh :
+      1. 200000
+      2. 200000
+      3. 200000
+      4. 200000
+      5. 200000
+      Hasil selalu konsisten.
+   c. Percobaan 3 (Producer consumer dengan semaphore)
+      Program producer menghasilkan data dan memasukkan ke buffer, sedangkan 
+      consumer mengambil data dari buffer.
+      output:
+      produksi : 0 
+      Konsumsi : 0 
+      Produksi : 1 
+      Konsumsi : 1 
+      Produksi : 2 
+      Konsumsi : 2 
+      Produksi : 3 
+      Konsumsi : 3 
+      Ketika ukuran buffer diubah menjadi 3, program tetap berjalan dengan baik 
+      karena semaphore mengatur jumlah slot buffer.
+   d. Percobaan 4 (Deadlock)
+      Program dijalankan dengan dua thread yang menggunakan dua lock berbeda.
+      Kondisi yang terjadi:
+      - Program tidak selesai.
+      - output tidak muncul
+      - Circular wait (terjadi deadlock).
+      
+      Setelah perbaikan menggunakan resource ordering, program berhasil berjalan.
+      Output yang muncul:
+      - Thread 1 selesai.
+      - thread 2 selesai.
+      
+3. Analisis Setiap Percobaan
+   a. Analisis Race condition
+      Race condition terjadi ketika dua atau lebih thread mengakses data yang sama 
+      secara bersamaan tanpa mekanisme sinkronisasi.
+      Pada program ini, variabel counter diakses oleh dua thread secara bersamaan 
+      sehingga terjadi konflik saat proses increment.
+      Operasi increment sebenarnya terdiri dari beberapa langkah:
+      - Membaca nilai variabel
+      - Menambahkan nilai
+      - Menyimpan kembali ke variabel
+      
+      Ketika dua thread melakukan proses ini bersamaan, nilai yang disimpan dapat 
+      saling menimpa sehingga hasil akhir menjadi tidak sesuai.
+   b. Analisis Mutex
+      Mutex digunakan untuk melindungi critical section agar hanya satu thread yang
+      dapat mengakses resource pada satu waktu.
+      Dengan menggunakan lock, thread lain harus menunggu sampai lock dilepaskan 
+      sebelum dapat mengakses variabel yang sama.
+      
+      Hal ini membuat hasil program menjadi konsisten.
+   c. Analisis semaphore
+      Semaphore digunakan untuk mengatur sinkronisasi antara producer dan consumer.
+      Dalam program ini terdapat dua semaphore:
+      - empty : menghitung jumlah slot kosong dalam buffer
+      - full : menghitung jumlah item yang tersedia dalam buffer
+      Producer hanya dapat menambahkan data jika buffer tidak penuh, sedangkan consumer 
+      hanya dapat mengambil data jika buffer tidak kosong.
+      Dengan mekanisme ini, masalah overflow dan underflow dapat dihindari.
+   d. Analisis deadlock
+      Deadlock terjadi ketika dua atau lebih proses saling menunggu resource yang 
+      dimiliki oleh proses lain.
+      Pada program ini:
+      - Thread 1 mengunci lock1 dan menunggu lock2
+      - Thread 2 mengunci lock2 dan menunggu lock1
+      Hal ini menyebabkan circular wait, sehingga kedua thread tidak dapat 
+      melanjutkan eksekusi.
+      Deadlock dapat dihindari dengan menggunakan resource ordering, yaitu semua 
+      thread harus mengunci resource dengan urutan yang sama.
+
+4. Identifikasi Masalah Concurrency
+    Beberapa masalah concurrency yang ditemukan dalam praktikum ini adalah:
+    a. Race condition
+       Terjadi ketika beberapa thread mengakses data yang sama tanpa sinkronisasi.
+    b. Deadlock 
+       Terjadi ketika beberapa thread saling menunggu resource yang dimiliki oleh thread lain.
+    c. Starvation
+       Terjadi ketika sebuah thread tidak mendapatkan kesempatan menggunakan resource karena
+       thread lain terus menggunakannya.
+       
+5. Perbandingan Teknik sinkronisasi
+   a. Mutex
+      Mengunci resource agar hanya satu thread yang mengakses
+   b. Semaphore
+      Mengatur jumlah resource yang dapat digunakan
+   c. Resource Ordering 
+      Mencegah terjadinya deadlock
+      
+6. Kesimpulan Konseptual
+    Berdasarkan praktikum yang telah dilakukan, dapat disimpulkan bahwa:
+    a. Penggunaan thread dapat meningkatkan performa program, tetapi dapat 
+       menimbulkan masalah race condition.
+    b. Mutex digunakan untuk melindungi critical section dan mencegah race condition.
+    c. Semaphore digunakan untuk mengatur sinkronisasi antar proses atau thread.
+    d. Deadlock terjadi akibat circular wait antar proses yang saling menunggu resource.
+    e. Starvation terjadi akibat kebijakan penjadwalan yang tidak adil dalam sistem operasi.
+    
+       Dengan memahami konsep-konsep tersebut, pengelolaan proses dan sinkronisasi dalam 
+       sistem operasi dapat dilakukan dengan lebih efektif.
+      
+
+#Nama : Irma Yuliana| Gina Raisa
