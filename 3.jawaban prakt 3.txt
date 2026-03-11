@@ -1,0 +1,27 @@
+1. setelah dirun  :
+2. Hasil :
+    Produksi : 0
+    Konsumsi : 0
+    Produksi : 1
+    KOnsumsi : 1
+    Produksi : 2
+    Konsumsi : 2
+    dan sterusnya..
+3. ubah ukuran buffer menjadi 3.
+4. Amati perubahan Blocking
+   yang terjadi adalah :
+   - Producer tidak bisa menambahkan item ketika buffer penuh. 
+   - Consumer tidak bisa mengambil item ketika buffer kosong.
+   - Semaphore mengatur agar produser dan consumer berjalan teratur.
+ 5. Bandingkan Mutex vs Semaphore secara konseptual 
+    Mutex :
+    - Digunakan untuk mutual exslusion.
+    - Hanya 1 thread masuk critical section.
+    - Menghindari race condition.
+    
+    Semaphore :
+    - Digunakan untuk sinkronisasi.
+    - Bisa mengatur beberapa Resource.
+    - mengatur alur producer-consumer.
+    
+#Nama : Irma Yuliana | Gina Raisa
