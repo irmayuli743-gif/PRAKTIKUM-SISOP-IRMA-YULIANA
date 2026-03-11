@@ -1,0 +1,38 @@
+1. Simulasi Deadlock, setelah diRun hasil :
+    - Program tidak selesai.
+    - Output tidak muncul.
+    - Circular wait (terjadi deadlock)
+2. Deadlock terjadi karena :
+    - Thread 1 mengunci resource 1.
+    - Thread 1 mencoba mengunci resource 2.
+    - Kedua thread dijalankan bersamaan.
+    - Menunggu keduanya selesai.
+3. Perbaikan Deadlock, setelah di Run. Hasil :
+    - Thread 1 selesai
+    - Thread 2 selesai
+4. Program tidak macet lagi.
+   analisis perbaikan :
+    - Kedua thread menggunakan urutan penguncian yang sama.
+    - Lock selalu dimulai dari lock1 kemudian lock2.
+    - Hal ini meStarvation terjadi jika kebijakan penjadwalan (scheduling) tidak adil, misalnya :
+nghilangkan circular wait.
+    - Dengan demikian deadlock tidak terjadi.
+
+
+5. DISKUSI STARVATION.
+   - Mengapa thread lain sulit berjalan?
+     Karena ada thread yang terus menggunakan CPU atau resource, sehingga thread lain
+     harus menunggu terlalu lama.
+   - Hubungkan dengan scheduling policy?!
+     Starvation terjadi jika kebijakan penjadwalan (scheduling) tidak adil, misalnya :
+     a. Priority scheduling
+     b. Thread dengan prioritas rendah jarang dijalankan.
+     
+6. Kesimpulan
+   - Deadlock terjadi ketika beberapa thread saling menunggu resource.
+   - Salah satu penyebabnya adalah circular wait.
+   - Deadlock dapat dihindari dengan resource ordering.
+   - Starvation terjadi ketika thread tidak mendapatkan kesempatan menggunakan resource.
+   
+   
+   #Nama : Irma Yuliana | Gina Raisa
